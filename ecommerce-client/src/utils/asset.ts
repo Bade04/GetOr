@@ -1,6 +1,6 @@
-export function publicAssetUrl(value?: string | null) {
+export function publicAssetUrl(value?: string | null): string | undefined {
   if (!value) {
-    return value;
+    return undefined;
   }
 
   const normalized = value.replace(/^\/*/, "");
