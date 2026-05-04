@@ -27,7 +27,7 @@ describe("API Functions", () => {
 
       const result = await getProducts();
       expect(result).toEqual(mockProducts);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/products");
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/products");
     });
   });
 
@@ -38,7 +38,7 @@ describe("API Functions", () => {
 
       const result = await getCartItems();
       expect(result).toEqual(mockCart);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/cart-items", { params: undefined });
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/cart-items", { params: undefined });
     });
 
     it("fetches cart items with expand", async () => {
@@ -47,7 +47,7 @@ describe("API Functions", () => {
 
       const result = await getCartItems({ expandProduct: true });
       expect(result).toEqual(mockCart);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/cart-items", { params: { expand: "product" } });
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/cart-items", { params: { expand: "product" } });
     });
   });
 
@@ -58,7 +58,7 @@ describe("API Functions", () => {
 
       const result = await addCartItem("p1", 1);
       expect(result).toEqual(mockItem);
-      expect(mockedAxios.post).toHaveBeenCalledWith("http://localhost:3000/api/cart-items", { productId: "p1", quantity: 1 });
+      expect(mockedAxios.post).toHaveBeenCalledWith("/api/cart-items", { productId: "p1", quantity: 1 });
     });
   });
 
@@ -69,7 +69,7 @@ describe("API Functions", () => {
 
       const result = await updateCartItem("p1", { quantity: 2 });
       expect(result).toEqual(mockItem);
-      expect(mockedAxios.put).toHaveBeenCalledWith("http://localhost:3000/api/cart-items/p1", { quantity: 2 });
+      expect(mockedAxios.put).toHaveBeenCalledWith("/api/cart-items/p1", { quantity: 2 });
     });
   });
 
@@ -78,7 +78,7 @@ describe("API Functions", () => {
       mockedAxios.delete.mockResolvedValue({});
 
       await deleteCartItem("p1");
-      expect(mockedAxios.delete).toHaveBeenCalledWith("http://localhost:3000/api/cart-items/p1");
+      expect(mockedAxios.delete).toHaveBeenCalledWith("/api/cart-items/p1");
     });
   });
 
@@ -89,7 +89,7 @@ describe("API Functions", () => {
 
       const result = await getDeliveryOptions();
       expect(result).toEqual(mockOptions);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/delivery-options", { params: undefined });
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/delivery-options", { params: undefined });
     });
   });
 
@@ -100,7 +100,7 @@ describe("API Functions", () => {
 
       const result = await getPaymentSummary();
       expect(result).toEqual(mockSummary);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/payment-summary");
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/payment-summary");
     });
   });
 
@@ -111,7 +111,7 @@ describe("API Functions", () => {
 
       const result = await getOrders();
       expect(result).toEqual(mockOrders);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/orders", { params: undefined });
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/orders", { params: undefined });
     });
   });
 
@@ -122,7 +122,7 @@ describe("API Functions", () => {
 
       const result = await getOrderById("o1");
       expect(result).toEqual(mockOrder);
-      expect(mockedAxios.get).toHaveBeenCalledWith("http://localhost:3000/api/orders/o1", { params: undefined });
+      expect(mockedAxios.get).toHaveBeenCalledWith("/api/orders/o1", { params: undefined });
     });
   });
 });

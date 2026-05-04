@@ -1,6 +1,5 @@
 import type { Product } from "../../types/shop";
 import { ProductCard } from "./ProductCard";
-import { useState } from "react";
 
 type ProductGridProps = {
   products: Product[];
@@ -8,7 +7,6 @@ type ProductGridProps = {
 };
 
 export function ProductGrid({ products, onAddToCart }: ProductGridProps) {
-  const [quantity, setQuantity] = useState(1);
   return (
     <div className="products-grid">
       {products.map((product) => (
