@@ -23,6 +23,9 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const distDir = path.join(__dirname, 'dist');
+const indexPath = path.join(distDir, 'index.html');
+const hasFrontendBuild = fs.existsSync(indexPath);
 const corsOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean)
   : [];
@@ -54,18 +57,38 @@ app.use('/api/orders', orderRoutes);
 app.use('/api/reset', resetRoutes);
 app.use('/api/payment-summary', paymentSummaryRoutes);
 
-// Serve static files from the dist folder
-app.use(express.static(path.join(__dirname, 'dist')));
+if (hasFrontendBuild) {
+  // Serve static files from the dist folder when a frontend build exists.
+  app.use(express.static(distDir));
 
-// Catch-all route to serve index.html for any unmatched routes
-app.get('*', (req, res) => {
-  const indexPath = path.join(__dirname, 'dist', 'index.html');
-  if (fs.existsSync(indexPath)) {
+  // Catch-all route to serve index.html for any unmatched routes.
+  app.get('*', (req, res) => {
     res.sendFile(indexPath);
-  } else {
-    res.status(404).send('index.html not found');
-  }
-});
+  });
+} else {
+  // Render is hosting the API only when the frontend is deployed separately.
+  app.get('/', (req, res) => {
+    res.json({
+      service: 'ecommerce-backend',
+      status: 'ok',
+      frontend: 'Deploy the frontend separately and point it to this API service.',
+      health: '/api/health'
+    });
+  });
+
+  app.get('*', (req, res) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/images')) {
+      res.status(404).json({ error: 'Not found' });
+      return;
+    }
+
+    res.status(404).json({
+      error: 'Frontend build not available on this service.',
+      frontend: 'Deploy the frontend separately and point it to this API service.',
+      health: '/api/health'
+    });
+  });
+}
 
 // Error handling middleware
 /* eslint-disable no-unused-vars */
