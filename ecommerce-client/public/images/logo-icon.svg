@@ -1,0 +1,11 @@
+<svg width="280" height="48" viewBox="0 0 280 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#176F6B" />
+      <stop offset="100%" stop-color="#28B38A" />
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="48" height="48" rx="12" fill="url(#iconGradient)" />
+  <text x="24" y="34" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" text-anchor="middle" fill="#ffffff">JB</text>
+  <text x="68" y="33" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#0F3E3B">Jade Bade</text>
+</svg>
