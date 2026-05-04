@@ -10,8 +10,14 @@ import { defaultCart } from '../defaultData/defaultCart.js';
 import { defaultOrders } from '../defaultData/defaultOrders.js';
 
 const router = express.Router();
+const isResetEnabled =
+  process.env.ENABLE_RESET_ROUTE === 'true' || process.env.NODE_ENV !== 'production';
 
 router.post('/', async (req, res) => {
+  if (!isResetEnabled) {
+    return res.status(404).json({ error: 'Not found' });
+  }
+
   await sequelize.sync({ force: true });
 
   const timestamp = Date.now();

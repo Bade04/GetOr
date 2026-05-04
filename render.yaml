@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ecommerce-backend
+    runtime: node
+    rootDir: ecommerce-server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 22
+      - key: ENABLE_RESET_ROUTE
+        value: false

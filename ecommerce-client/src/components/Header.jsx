@@ -6,6 +6,7 @@ import {
   useNavigate,
   useSearchParams,
 } from "react-router-dom";
+import { publicAssetUrl } from "../utils/asset";
 
 export function Header({ cartQuantity = 0 }) {
   const navigate = useNavigate();
@@ -32,11 +33,15 @@ export function Header({ cartQuantity = 0 }) {
       <div className="header">
         <div className="left-section">
           <NavLink to="/" className="header-link">
-            <img alt="1" className="logo" src="/images/logo-white.png" />
+            <img
+              alt="1"
+              className="logo"
+              src={publicAssetUrl("images/logo-white.png")}
+            />
             <img
               alt="1"
               className="mobile-logo"
-              src="/images/mobile-logo-white.png"
+              src={publicAssetUrl("images/mobile-logo-white.png")}
             />
           </NavLink>
         </div>
@@ -58,7 +63,7 @@ export function Header({ cartQuantity = 0 }) {
               <img
                 alt="Search icon"
                 className="search-icon"
-                src="/images/icons/search-icon.png"
+                src={publicAssetUrl("images/icons/search-icon.png")}
               />
             </button>
           </form>
@@ -80,7 +85,7 @@ export function Header({ cartQuantity = 0 }) {
             <img
               alt="Cart icon"
               className="cart-icon"
-              src="/images/icons/cart-icon.png"
+              src={publicAssetUrl("images/icons/cart-icon.png")}
             />
             <div className="cart-quantity">{cartQuantity}</div>
             <div className="cart-text">Cart</div>

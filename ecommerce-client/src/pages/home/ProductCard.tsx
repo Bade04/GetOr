@@ -43,7 +43,9 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
         <img
           alt={`${product.rating.stars} stars`}
           className="product-rating-stars"
-          src={`/images/ratings/rating-${Math.round(product.rating.stars * 10)}.png`}
+          src={publicAssetUrl(
+            `images/ratings/rating-${Math.round(product.rating.stars * 10)}.png`,
+          )}
         />
         <div className="product-rating-count link-primary">
           {product.rating.count}
@@ -76,7 +78,10 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
       <div className="product-spacer"></div>
 
       <div className={`added-to-cart ${showAddedMessage ? "visible" : ""}`}>
-        <img alt="Added to cart" src="/images/icons/checkmark.png" />
+        <img
+          alt="Added to cart"
+          src={publicAssetUrl("images/icons/checkmark.png")}
+        />
         Added
       </div>
 

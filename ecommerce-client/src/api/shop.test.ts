@@ -10,6 +10,7 @@ import {
   getPaymentSummary,
   getOrders,
   getOrderById,
+  createOrder,
 } from "./shop";
 
 vi.mock("axios");
@@ -123,6 +124,17 @@ describe("API Functions", () => {
       const result = await getOrderById("o1");
       expect(result).toEqual(mockOrder);
       expect(mockedAxios.get).toHaveBeenCalledWith("/api/orders/o1", { params: undefined });
+    });
+  });
+
+  describe("createOrder", () => {
+    it("creates an order", async () => {
+      const mockOrder = { id: "o2" };
+      mockedAxios.post.mockResolvedValue({ data: mockOrder });
+
+      const result = await createOrder();
+      expect(result).toEqual(mockOrder);
+      expect(mockedAxios.post).toHaveBeenCalledWith("/api/orders");
     });
   });
 });

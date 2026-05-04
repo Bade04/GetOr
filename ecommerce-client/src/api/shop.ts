@@ -9,19 +9,16 @@ import type {
   PaymentSummary,
   Product,
 } from "../types/shop";
-
-const API_BASE_URL =
-  import.meta.env.VITE_API_URL ||
-  (import.meta.env.MODE === "development" ? "http://localhost:3000" : "");
+import { apiUrl } from "../utils/asset";
 
 export async function getProducts() {
-  const response = await axios.get<Product[]>(`${API_BASE_URL}/api/products`);
+  const response = await axios.get<Product[]>(apiUrl("/api/products"));
   return response.data;
 }
 
 export async function getCartItems(options?: { expandProduct?: boolean }) {
   const response = await axios.get<CartItem[] | ExpandedCartItem[]>(
-    `${API_BASE_URL}/api/cart-items`,
+    apiUrl("/api/cart-items"),
     {
       params: options?.expandProduct ? { expand: "product" } : undefined,
     },
@@ -30,7 +27,7 @@ export async function getCartItems(options?: { expandProduct?: boolean }) {
 }
 
 export async function addCartItem(productId: string, quantity: number) {
-  const response = await axios.post<CartItem>(`${API_BASE_URL}/api/cart-items`, {
+  const response = await axios.post<CartItem>(apiUrl("/api/cart-items"), {
     productId,
     quantity,
   });
@@ -42,14 +39,14 @@ export async function updateCartItem(
   updates: { quantity?: number; deliveryOptionId?: string },
 ) {
   const response = await axios.put<CartItem>(
-    `${API_BASE_URL}/api/cart-items/${productId}`,
+    apiUrl(`/api/cart-items/${productId}`),
     updates,
   );
   return response.data;
 }
 
 export async function deleteCartItem(productId: string) {
-  await axios.delete(`${API_BASE_URL}/api/cart-items/${productId}`);
+  await axios.delete(apiUrl(`/api/cart-items/${productId}`));
 }
 
 export async function getDeliveryOptions(options?: {
@@ -57,7 +54,7 @@ export async function getDeliveryOptions(options?: {
 }) {
   const response = await axios.get<
     DeliveryOption[] | DeliveryOptionWithEstimate[]
-  >(`${API_BASE_URL}/api/delivery-options`, {
+  >(apiUrl("/api/delivery-options"), {
     params: options?.expandEstimatedDeliveryTime
       ? { expand: "estimatedDeliveryTime" }
       : undefined,
@@ -66,15 +63,13 @@ export async function getDeliveryOptions(options?: {
 }
 
 export async function getPaymentSummary() {
-  const response = await axios.get<PaymentSummary>(
-    `${API_BASE_URL}/api/payment-summary`,
-  );
+  const response = await axios.get<PaymentSummary>(apiUrl("/api/payment-summary"));
   return response.data;
 }
 
 export async function getOrders(options?: { expandProducts?: boolean }) {
   const response = await axios.get<Order[] | ExpandedOrder[]>(
-    `${API_BASE_URL}/api/orders`,
+    apiUrl("/api/orders"),
     {
       params: options?.expandProducts ? { expand: "products" } : undefined,
     },
@@ -87,10 +82,15 @@ export async function getOrderById(
   options?: { expandProducts?: boolean },
 ) {
   const response = await axios.get<Order | ExpandedOrder>(
-    `${API_BASE_URL}/api/orders/${orderId}`,
+    apiUrl(`/api/orders/${orderId}`),
     {
       params: options?.expandProducts ? { expand: "products" } : undefined,
     },
   );
+  return response.data;
+}
+
+export async function createOrder() {
+  const response = await axios.post<Order>(apiUrl("/api/orders"));
   return response.data;
 }

@@ -57,7 +57,7 @@ export function OrderList({ orders }: OrderListProps) {
                     <img
                       alt="Add to cart icon"
                       className="buy-again-icon"
-                      src="/images/icons/buy-again.png"
+                      src={publicAssetUrl("images/icons/buy-again.png")}
                     />
                     <span className="buy-again-message">Add to Cart</span>
                   </button>

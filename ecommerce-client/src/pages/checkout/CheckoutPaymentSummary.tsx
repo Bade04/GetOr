@@ -1,7 +1,7 @@
 import type { PaymentSummary } from "../../types/shop";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { formatCurrency } from "../../utils/money";
+import { createOrder as createOrderRequest } from "../../api/shop";
 
 type CheckoutPaymentSummaryProps = {
   paymentSummary: PaymentSummary | null;
@@ -14,9 +14,9 @@ export function CheckoutPaymentSummary({
 }: CheckoutPaymentSummaryProps) {
   const navigate = useNavigate();
 
-  const createOrder = () => async () => {
+  const handleCreateOrder = () => async () => {
     try {
-      await axios.post("/api/orders");
+      await createOrderRequest();
       await loadCart();
       navigate("/orders");
     } catch (error) {
@@ -64,7 +64,7 @@ export function CheckoutPaymentSummary({
 
       <button
         className="place-order-button button-primary"
-        onClick={createOrder()}
+        onClick={handleCreateOrder()}
       >
         Place your order
       </button>
