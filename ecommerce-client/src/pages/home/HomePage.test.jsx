@@ -40,14 +40,16 @@ describe("HomePage", () => {
       </MemoryRouter>,
     );
 
-    expect(screen.getByText("Loading products...")).toBeInTheDocument();
+    expect(screen.getByText("Loading live catalog...")).toBeInTheDocument();
 
     expect(
       await screen.findByText("Black and Gray Athletic Cotton Socks - 6 Pairs"),
     ).toBeInTheDocument();
 
     await waitFor(() => {
-      expect(screen.queryByText("Loading products...")).not.toBeInTheDocument();
+      expect(
+        screen.queryByText("Loading live catalog..."),
+      ).not.toBeInTheDocument();
     });
   });
 

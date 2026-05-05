@@ -1,18 +1,59 @@
-# React + Vite
+# GetOr Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GetOr is a full-stack e-commerce portfolio project with a React + Vite storefront connected to an Express + Sequelize backend. The frontend focuses on a believable shopping flow: searchable product browsing, cart updates, checkout, order history, and package tracking.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19
+- Vite
+- React Router
+- Axios
+- Vitest
+- Playwright
 
-## React Compiler
+## What This Frontend Shows
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- A polished landing experience that explains the product quickly
+- Search-driven product discovery
+- Cart quantity updates synced with the backend API
+- Checkout and payment summary flow
+- Orders page with post-purchase tracking links
+- Deployment-ready frontend for Vercel
 
-## Expanding the ESLint configuration
+## Local Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies:
 
-## Now let's talk about the ecommerce website
+```bash
+npm install
+```
+
+2. Add a `.env.local` file if you want to target a custom backend:
+
+```bash
+VITE_API_URL=http://localhost:3000
+```
+
+3. Start the frontend:
+
+```bash
+npm run dev
+```
+
+The app expects the backend API to expose routes such as:
+
+- `/api/products`
+- `/api/cart-items`
+- `/api/payment-summary`
+- `/api/orders`
+
+## Scripts
+
+- `npm run dev` starts the Vite dev server
+- `npm run build` creates a production build
+- `npm run test` runs unit tests with Vitest
+- `npm run test:e2e` runs Playwright end-to-end tests
+
+## Portfolio Blurb
+
+Full-stack e-commerce app with React, Vite, Express, Sequelize, Render, and Vercel deployment. Includes searchable product browsing, persistent cart behavior, checkout flow, order history, and package tracking.

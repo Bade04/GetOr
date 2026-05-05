@@ -28,71 +28,68 @@ export function Header({ cartQuantity = 0 }) {
   };
 
   return (
-    <>
-      <title>Header</title>
-      <div className="header">
-        <div className="left-section">
-          <NavLink to="/" className="header-link">
-            <img
-              alt="1"
-              className="logo"
-              src={publicAssetUrl("images/logo-white.png")}
-            />
-            <img
-              alt="1"
-              className="mobile-logo"
-              src={publicAssetUrl("images/mobile-logo-white.png")}
-            />
-          </NavLink>
-        </div>
-
-        <div className="middle-section">
-          <form
-            key={searchParams.get("search") ?? ""}
-            className="search-form"
-            onSubmit={handleSearchSubmit}
-          >
-            <input
-              className="search-bar"
-              type="text"
-              name="search"
-              placeholder="Search products"
-              defaultValue={searchParams.get("search") ?? ""}
-            />
-            <button className="search-button" type="submit">
-              <img
-                alt="Search icon"
-                className="search-icon"
-                src={publicAssetUrl("images/icons/search-icon.png")}
-              />
-            </button>
-          </form>
-        </div>
-
-        <div className="right-section">
-          <NavLink className="orders-link header-link" to="/orders">
-            <span className="orders-text">Orders</span>
-          </NavLink>
-
-          <NavLink
-            className="cart-link header-link"
-            to={
-              location.pathname === "/" && searchParams.toString()
-                ? `/checkout?${searchParams.toString()}`
-                : "/checkout"
-            }
-          >
-            <img
-              alt="Cart icon"
-              className="cart-icon"
-              src={publicAssetUrl("images/icons/cart-icon.png")}
-            />
-            <div className="cart-quantity">{cartQuantity}</div>
-            <div className="cart-text">Cart</div>
-          </NavLink>
-        </div>
+    <div className="header">
+      <div className="left-section">
+        <NavLink to="/" className="header-link" aria-label="Go to homepage">
+          <img
+            alt="GetOr logo"
+            className="logo"
+            src={publicAssetUrl("images/logo-white.png")}
+          />
+          <img
+            alt="GetOr mobile logo"
+            className="mobile-logo"
+            src={publicAssetUrl("images/mobile-logo-white.png")}
+          />
+        </NavLink>
       </div>
-    </>
+
+      <div className="middle-section">
+        <form
+          key={searchParams.get("search") ?? ""}
+          className="search-form"
+          onSubmit={handleSearchSubmit}
+        >
+          <input
+            className="search-bar"
+            type="text"
+            name="search"
+            placeholder="Search products"
+            defaultValue={searchParams.get("search") ?? ""}
+          />
+          <button className="search-button" type="submit">
+            <img
+              alt="Search icon"
+              className="search-icon"
+              src={publicAssetUrl("images/icons/search-icon.png")}
+            />
+          </button>
+        </form>
+      </div>
+
+      <div className="right-section">
+        <NavLink className="orders-link header-link" to="/orders">
+          <span className="orders-text">Orders</span>
+        </NavLink>
+
+        <NavLink
+          className="cart-link header-link"
+          to={
+            location.pathname === "/" && searchParams.toString()
+              ? `/checkout?${searchParams.toString()}`
+              : "/checkout"
+          }
+        >
+          <img
+            alt="Cart icon"
+            className="cart-icon"
+            src={publicAssetUrl("images/icons/cart-icon.png")}
+          />
+          <div className="cart-quantity">{cartQuantity}</div>
+          <div className="cart-text">Cart</div>
+        </NavLink>
+      </div>
+    </div>
   );
 }
 
