@@ -30,15 +30,34 @@ const corsOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',').map((origin) => origin.trim()).filter(Boolean)
   : [];
 
+function escapeRegex(value) {
+  return value.replace(/[|\\{}()[\]^$+?.]/g, '\\$&');
+}
+
+function matchesCorsOrigin(origin) {
+  if (corsOrigins.length === 0) {
+    return true;
+  }
+
+  return corsOrigins.some((allowedOrigin) => {
+    if (!allowedOrigin.includes('*')) {
+      return allowedOrigin === origin;
+    }
+
+    const pattern = `^${escapeRegex(allowedOrigin).replace(/\\\*/g, '.*')}$`;
+    return new RegExp(pattern).test(origin);
+  });
+}
+
 // Middleware
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || corsOrigins.length === 0 || corsOrigins.includes(origin)) {
+    if (!origin || matchesCorsOrigin(origin)) {
       callback(null, true);
       return;
     }
 
-    callback(new Error('Not allowed by CORS'));
+    callback(new Error(`CORS blocked for origin: ${origin}`));
   }
 }));
 app.use(express.json());
@@ -94,6 +113,12 @@ if (hasFrontendBuild) {
 /* eslint-disable no-unused-vars */
 app.use((err, req, res, next) => {
   console.error(err.stack);
+
+  if (err.message?.startsWith('CORS blocked for origin:')) {
+    res.status(403).json({ error: err.message });
+    return;
+  }
+
   res.status(500).json({ error: 'Something went wrong!' });
 });
 /* eslint-enable no-unused-vars */

@@ -32,7 +32,7 @@ Build settings:
 Recommended environment variables:
 
 - `NODE_ENV=production`
-- `CORS_ORIGINS=https://your-vercel-project.vercel.app`
+- `CORS_ORIGINS=https://your-vercel-project.vercel.app,https://*.vercel.app`
 - `ENABLE_RESET_ROUTE=false`
 
 Optional database variables for a persistent production database:
@@ -53,6 +53,8 @@ If those database variables are not set, the backend falls back to `database.sql
 3. Copy the live Render URL.
 4. Deploy the frontend to Vercel with `VITE_API_URL` set to that Render URL.
 5. Add the Vercel domain to `CORS_ORIGINS` on Render.
+
+If you want Vercel preview deployments to work too, include a wildcard origin such as `https://*.vercel.app`.
 
 ## Health check
 
