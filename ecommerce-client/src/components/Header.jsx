@@ -31,16 +31,7 @@ export function Header({ cartQuantity = 0 }) {
     <div className="header">
       <div className="left-section">
         <NavLink to="/" className="header-link" aria-label="Go to homepage">
-          <img
-            alt="GetOr logo"
-            className="logo"
-            src={publicAssetUrl("images/logo-white.png")}
-          />
-          <img
-            alt="GetOr mobile logo"
-            className="mobile-logo"
-            src={publicAssetUrl("images/mobile-logo-white.png")}
-          />
+          <span className="logo-text">GetOr</span>
         </NavLink>
       </div>
 

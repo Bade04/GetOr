@@ -20,16 +20,7 @@ export function CheckoutHeader({
         <div className="header-content">
           <div className="checkout-header-left-section">
             <Link to="/">
-              <img
-                alt="Amazon"
-                className="logo"
-                src={publicAssetUrl("images/logo.png")}
-              />
-              <img
-                alt="Amazon"
-                className="mobile-logo"
-                src={publicAssetUrl("images/mobile-logo.png")}
-              />
+              <span className="logo-text">GetOr</span>
             </Link>
           </div>
 

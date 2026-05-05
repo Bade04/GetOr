@@ -37,9 +37,11 @@
   border: 1px solid white;
 }
 
-.header .logo {
-  height: 26px;
-  margin-top: 1px;
+.header .logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.5px;
 }
 
 .header .mobile-logo {
@@ -47,14 +49,12 @@
 }
 
 @media (max-width: 675px) {
-  .header .logo {
-    display: none;
+  .header .logo-text {
+    font-size: 20px;
   }
 
   .header .mobile-logo {
-    display: block;
-    height: 26px;
-    margin-top: 1px;
+    display: none;
   }
 }
 

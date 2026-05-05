@@ -23,9 +23,13 @@
   width: 200px;
 }
 
-.checkout-header .logo {
-  height: 26px;
-  margin-top: 0;
+.checkout-header .logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  display: inline-block;
 }
 
 .checkout-header .mobile-logo {
@@ -37,13 +41,12 @@
     width: auto;
   }
 
-  .checkout-header .logo {
-    display: none;
+  .checkout-header .logo-text {
+    font-size: 20px;
   }
 
   .checkout-header .mobile-logo {
-    display: inline-block;
-    height: 26px;
+    display: none;
   }
 }
 
