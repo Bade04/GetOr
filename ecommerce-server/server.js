@@ -44,7 +44,10 @@ function matchesCorsOrigin(origin) {
       return allowedOrigin === origin;
     }
 
-    const pattern = `^${escapeRegex(allowedOrigin).replace(/\\\*/g, '.*')}$`;
+    const pattern = `^${allowedOrigin
+      .split('*')
+      .map((segment) => escapeRegex(segment))
+      .join('.*')}$`;
     return new RegExp(pattern).test(origin);
   });
 }
