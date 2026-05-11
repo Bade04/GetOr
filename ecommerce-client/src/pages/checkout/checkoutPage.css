@@ -213,3 +213,22 @@
   margin-left: 5px;
   margin-right: 5px;
 }
+
+.checkout-page .order-summary-empty-state,
+.checkout-page .empty-payment-summary-message {
+  background-color: rgb(250, 251, 252);
+  border: 1px solid rgb(219, 223, 225);
+  border-radius: 8px;
+  padding: 22px;
+  color: rgb(77, 91, 101);
+  margin-bottom: 20px;
+}
+
+.checkout-page .empty-payment-summary-message {
+  margin-top: 0;
+}
+
+.checkout-page .place-order-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

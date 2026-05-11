@@ -24,6 +24,8 @@ export function CheckoutPaymentSummary({
       alert("Failed to place order. Please try again.");
     }
   };
+  const hasOrderItems = Boolean(paymentSummary?.totalItems && paymentSummary.totalItems > 0);
+
   return (
     <div className="payment-summary">
       <div className="payment-summary-title">Payment Summary</div>
@@ -65,9 +67,15 @@ export function CheckoutPaymentSummary({
       <button
         className="place-order-button button-primary"
         onClick={handleCreateOrder()}
+        disabled={!hasOrderItems}
       >
         Place your order
       </button>
+      {!hasOrderItems ? (
+        <p className="empty-payment-summary-message">
+          Add items to your cart to see the full payment summary and place an order.
+        </p>
+      ) : null}
     </div>
   );
 }

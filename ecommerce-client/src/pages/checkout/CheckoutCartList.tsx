@@ -26,6 +26,14 @@ export function CheckoutCartList({
   onDeleteCartItem,
   updatingProductId,
 }: CheckoutCartListProps) {
+  if (cartItems.length === 0) {
+    return (
+      <div className="order-summary-empty-state">
+        <p>Your cart is empty. Add products from the store to continue.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="order-summary">
       {cartItems.map((cartItem) => {

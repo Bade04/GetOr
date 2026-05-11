@@ -10,6 +10,14 @@ type OrderListProps = {
 };
 
 export function OrderList({ orders }: OrderListProps) {
+  if (orders.length === 0) {
+    return (
+      <div className="orders-empty-state">
+        <p>No orders yet. Place an order on the checkout page to see it here.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="orders-grid">
       {orders.map((order) => (
