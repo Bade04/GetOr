@@ -32,7 +32,7 @@
 .home-page .products-grid {
   border: 1px solid rgba(25, 135, 84, 0.12);
   box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
-  backdrop-filter: blur(10px);
+  webkit-backdrop-filter: blur(10px);
 }
 
 .home-page .hero-copy {
