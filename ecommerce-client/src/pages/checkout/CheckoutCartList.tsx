@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import type {
   DeliveryOptionWithEstimate,
   ExpandedCartItem,
@@ -29,7 +30,10 @@ export function CheckoutCartList({
   if (cartItems.length === 0) {
     return (
       <div className="order-summary-empty-state">
-        <p>Your cart is empty. Add products from the store to continue.</p>
+        <p>Your cart is empty. Add products from the catalog to continue.</p>
+        <Link className="checkout-empty-link link-primary" to="/">
+          Browse catalog
+        </Link>
       </div>
     );
   }

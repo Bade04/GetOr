@@ -123,36 +123,14 @@ export function HomePage({ cartQuantity, onAddToCart }: HomePageProps) {
                 Explore catalog
               </a>
               <Link className="hero-action hero-action-secondary" to="/orders">
-                View order flow
+                View orders
               </Link>
             </div>
 
             <p className="hero-updated">Updated: {getCurrentMonthYear()}</p>
-
-            <div className="hero-stats" aria-label="Project highlights">
-              <div className="hero-stat">
-                <span>{products.length || "--"}</span>
-                Live products
-              </div>
-              <div className="hero-stat">
-                <span>{averageRating ?? "--"}</span>
-                Average rating
-              </div>
-              <div className="hero-stat">
-                <span>{cartQuantity}</span>
-                Cart items
-              </div>
-            </div>
-
-            <div
-              className="hero-signal-bar"
-              aria-label="Portfolio proof points"
-            >
-              <div>
-                <strong>Built for portfolios:</strong> live catalog, persistent
-                cart, checkout, order history, and tracking in one deployed app.
-              </div>
-            </div>
+            <p className="hero-description-secondary">
+              Browse curated inventory, add items to your cart, and complete checkout to create your own order history.
+            </p>
           </div>
 
           <div className="hero-proof-grid" aria-label="Core product features">

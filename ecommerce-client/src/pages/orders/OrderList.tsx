@@ -13,7 +13,10 @@ export function OrderList({ orders }: OrderListProps) {
   if (orders.length === 0) {
     return (
       <div className="orders-empty-state">
-        <p>No orders yet. Place an order on the checkout page to see it here.</p>
+        <p>No orders yet. Place an order to see your purchase history here.</p>
+        <Link className="orders-empty-link link-primary" to="/">
+          Browse products
+        </Link>
       </div>
     );
   }
