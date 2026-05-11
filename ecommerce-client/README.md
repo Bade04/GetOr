@@ -1,5 +1,7 @@
 # GetOr Frontend
 
+Updated: May 2026
+
 GetOr is a full-stack e-commerce portfolio project with a React + Vite storefront connected to an Express + Sequelize backend. The frontend focuses on a believable shopping flow: searchable product browsing, cart updates, checkout, order history, and package tracking.
 
 ## Stack

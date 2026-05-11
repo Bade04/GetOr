@@ -14,3 +14,14 @@ export function formatShortDate(timestampMs: number) {
     year: "numeric",
   });
 }
+
+export function formatMonthYear(timestampMs: number) {
+  return new Date(timestampMs).toLocaleDateString("en-US", {
+    month: "long",
+    year: "numeric",
+  });
+}
+
+export function getCurrentMonthYear() {
+  return formatMonthYear(Date.now());
+}

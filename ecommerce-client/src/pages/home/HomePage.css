@@ -78,6 +78,13 @@
   margin-top: 28px;
 }
 
+.home-page .hero-updated {
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
 .home-page .hero-stack {
   display: flex;
   flex-wrap: wrap;

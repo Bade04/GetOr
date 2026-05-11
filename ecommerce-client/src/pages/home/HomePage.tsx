@@ -5,6 +5,7 @@ import { getProducts } from "../../api/shop";
 import type { Product } from "../../types/shop";
 import { ProductGrid } from "./ProductGrid";
 import { Link, useSearchParams } from "react-router-dom";
+import { getCurrentMonthYear } from "../../utils/date";
 
 type HomePageProps = {
   cartQuantity: number;
@@ -98,7 +99,10 @@ export function HomePage({ cartQuantity, onAddToCart }: HomePageProps) {
         <section className="hero-panel">
           <div className="hero-copy">
             <p className="hero-eyebrow">Full-stack storefront demo</p>
-            <h1>GetOr is a full-stack e-commerce app built to feel like a real shopping product.</h1>
+            <h1>
+              GetOr is a full-stack e-commerce app built to feel like a real
+              shopping product.
+            </h1>
             <p className="hero-description">
               The frontend is built with React and Vite, the backend runs on
               Express and Sequelize, and the project is set up for Vercel plus
@@ -123,6 +127,8 @@ export function HomePage({ cartQuantity, onAddToCart }: HomePageProps) {
               </Link>
             </div>
 
+            <p className="hero-updated">Updated: {getCurrentMonthYear()}</p>
+
             <div className="hero-stats" aria-label="Project highlights">
               <div className="hero-stat">
                 <span>{products.length || "--"}</span>
@@ -138,7 +144,10 @@ export function HomePage({ cartQuantity, onAddToCart }: HomePageProps) {
               </div>
             </div>
 
-            <div className="hero-signal-bar" aria-label="Portfolio proof points">
+            <div
+              className="hero-signal-bar"
+              aria-label="Portfolio proof points"
+            >
               <div>
                 <strong>Built for portfolios:</strong> live catalog, persistent
                 cart, checkout, order history, and tracking in one deployed app.
