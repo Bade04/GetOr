@@ -129,6 +129,12 @@ app.use((err, req, res, next) => {
 // Sync database and load default data if none exist
 await sequelize.sync();
 
+if (defaultCart.length === 0 && defaultOrders.length === 0) {
+  await CartItem.destroy({ where: {} });
+  await Order.destroy({ where: {} });
+  console.log('Cleared persisted cart and order data on startup.');
+}
+
 const productCount = await Product.count();
 if (productCount === 0) {
   const timestamp = Date.now();
